@@ -1,0 +1,22 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:9.6
+    container_name: 'USERS_DB'
+    restart: always
+    environment:
+      POSTGRES_HOST: 'localhost'
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    command: postgres
+
+  redis:
+    image: 'redis:alpine'
+    container_name: 'USERS_REDIS'
+    ports:
+      - "6379:6379"
